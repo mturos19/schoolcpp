@@ -1,0 +1,40 @@
+// Add x to the end of the array, expanding if necessary.
+void DynArray::append(int x) {
+	if (size_ == capacity_) {
+		capacity_ *= 2;
+		int* temp = new int[capacity_];
+		for(int i=0;i<size_;i++) temp[i] = array_[i];
+		delete [] array_;
+		array_ = temp;
+	}
+	array_[size_++] = x;
+}
+
+
+
+class DynArray {
+public:
+	DynArray();
+	~DynArray();
+	void init(int size, int* initialData);
+
+	bool set(int i, int v);
+	int get(int i) const;
+	int size() const;
+	void print() const;
+
+	void append(int x);
+
+private:
+	int size_;
+	int capacity_;
+	int* array_;
+};
+
+
+// Constructor. Set array to initial size 0 and initial capacity INITIALCAP
+DynArray::DynArray() {
+	cout << "Default constructor" << endl;
+	// IMPLEMENT ME
+}
+
